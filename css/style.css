@@ -1,11 +1,188 @@
-/* Diagnostic Styling */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap')
+
 * {
-  outline: 2px dotted gray;
-} 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+@keyframes animStar {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
+}
 
-/* temp background color */
+html {
+  height: 100%;
+  background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+  overflow: hidden;
+}
+
 body {
-    background: peachpuff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* Changed from center to flex-end to align at bottom */
+  padding: 0; /* Removed padding to prevent overflow */
+  font-family: Lato, sans-serif;
+  margin: 0; /* Added to prevent default margin */
+}
+
+#stars {
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: 1423px 862px #FFF, 923px 1102px #FFF, 598px 840px #FFF, /* Many more shadows would be here */;
+  animation: animStar 50s linear infinite;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+#stars:after {
+  content: " ";
+  position: absolute;
+  top: 2000px;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: 1423px 862px #FFF, 923px 1102px #FFF, 598px 840px #FFF, /* Many more shadows would be here */;
+}
+
+#stars2 {
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: 1088px 1352px #FFF, 1957px 963px #FFF, 1756px 642px #FFF, /* Many more shadows would be here */;
+  animation: animStar 100s linear infinite;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+#stars2:after {
+  content: " ";
+  position: absolute;
+  top: 2000px;
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: 1088px 1352px #FFF, 1957px 963px #FFF, 1756px 642px #FFF, /* Many more shadows would be here */;
+}
+
+#stars3 {
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  box-shadow: 387px 465px #FFF, 1377px 1243px #FFF, 1612px 1829px #FFF, /* Many more shadows would be here */;
+  animation: animStar 150s linear infinite;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+#stars3:after {
+  content: " ";
+  position: absolute;
+  top: 2000px;
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  box-shadow: 387px 465px #FFF, 1377px 1243px #FFF, 1612px 1829px #FFF, /* Many more shadows would be here */;
+}
+
+
+.bento-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Changed from 3 to 5 columns for horizontal layout */
+  grid-template-rows: 1fr; /* Changed to single row */
+  gap: 0.75rem; /* Reduced gap */
+  width: 100%; /* Use full width */
+  max-width: 100%; /* Use full width */
+  padding: 0.75rem; /* Reduced padding */
+  background: transparent;
+  border-radius: 1.5rem 1.5rem 0 0; /* Rounded top corners only */
+  box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.1); /* Shadow from top */
+  overflow: hidden; /* Prevents children from spilling out */
+}
+
+.bento-item {
+  background: #203666;
+  border-radius: 0.75rem;
+  padding: 1rem; /* Reduced padding */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem; /* Smaller font size */
+  color: #FFF;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+  height: 100%;
+  overflow: hidden; /* Prevent content overflow */
+  word-break: break-word; /* Allow text to wrap */
+  text-align: center;
+}
+
+.bento-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-color: #e0e0e0;
+}
+
+/* Reset featured items to single cell */
+.feature-1, .feature-2, .feature-3 {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.feature-1 {
+  background: #203666;
+}
+
+.feature-2 {
+  background: #203666;
+}
+
+.feature-3 {
+  background: #203666;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .bento-container {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 0.5rem;
+    padding: 0.5rem;
   }
   
+  .bento-item {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .bento-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+  }
+  
+  .bento-item {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+}
