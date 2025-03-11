@@ -119,7 +119,7 @@ body {
 }
 
 .bento-item {
-  background: #203666;
+  background: #33203666;
   border-radius: 0.75rem;
   padding: 1rem; /* Reduced padding */
   display: flex;
@@ -149,15 +149,15 @@ body {
 }
 
 .feature-1 {
-  background: #203666;
+  background: #33203666;
 }
 
 .feature-2 {
-  background: #203666;
+  background: #33203666;
 }
 
 .feature-3 {
-  background: #203666;
+  background: #33203666;
 }
 
 /* Responsive adjustments */
