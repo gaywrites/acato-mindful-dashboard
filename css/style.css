@@ -186,3 +186,164 @@ body {
     font-size: 0.8rem;
   }
 }
+
+/* ---------------------Ship animation-------------------------- */ 
+/*https://codepen.io/valerite-dev/pen/mEeyNj */
+
+/* Updated Ship Animation with visibility fix */
+.ship {
+  position: fixed; /* Change to fixed to better handle full viewport movement */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally as reference point */
+  width: 3rem;
+  height: 3rem;
+  margin-top: -1.5rem; /* Half of height for centering */
+  margin-left: -1.5rem; /* Half of width for centering */
+  z-index: 1000; /* Ensure it's above background stars */
+  
+  /* Add new animation for the yoyo effect with pause */
+  animation: moveAcrossScreen 15s ease-in-out infinite;
+}
+
+/* Create the new animation keyframes for the yoyo effect with pause */
+@keyframes moveAcrossScreen {
+  /* Start from off-screen left */
+  0% {
+    transform: translateX(-100vw) rotate(-10deg);
+  }
+  
+  /* Move to center with a slight tilt */
+  25% {
+    transform: translateX(0) rotate(5deg);
+  }
+  
+  /* Stay in center for 5 seconds (25% to 45% of the animation) */
+  45% {
+    transform: translateX(0) rotate(-5deg);
+  }
+  
+  /* Move off-screen right */
+  70% {
+    transform: translateX(100vw) rotate(10deg);
+  }
+  
+  /* Stay off-screen right briefly */
+  75% {
+    transform: translateX(100vw) rotate(10deg);
+  }
+  
+  /* Move back to center with a slight tilt */
+  90% {
+    transform: translateX(0) rotate(-5deg);
+  }
+  
+  /* End off-screen left to repeat the animation */
+  100% {
+    transform: translateX(-100vw) rotate(-10deg);
+  }
+}
+
+/* Other ship parts styling - keeping original styling */
+.body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #e3e3e3;
+  box-shadow: inset 0 -5px 5px rgba(22, 48, 64, 0.5);
+  z-index: 1000;
+}
+
+.eyes {
+  width: 1rem;
+  position: relative;
+  top: 1.5rem;
+  left: 1rem;
+  animation: eyes 4s ease-in-out infinite alternate;
+}
+
+.eye_1, .eye_2 {
+  position: absolute;
+  display: block;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background-color: #163040;
+  animation: eye 4s ease-in-out infinite alternate;
+}
+
+.eye_2 {
+  right: 0;
+}
+
+.foot_1, .foot_2, .foot_3 {
+  position: absolute;
+  top: 1.5rem;
+  width: 0.4rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: linear-gradient(rgba(227, 227, 227, 0.6), rgba(227, 227, 227, 0.3));
+  opacity: 0.5;
+}
+
+.foot_1 {
+  transform: rotate(25deg);
+}
+
+.foot_2 {
+  top: 2rem;
+  width: 0.37rem;
+  left: 1.315rem;
+  background: linear-gradient(rgba(227, 227, 227, 0.7) 75%, rgba(227, 227, 227, 0.3));
+  opacity: 0.8;
+}
+
+.foot_3 {
+  transform: rotate(-25deg);
+  right: 0;
+  background: linear-gradient(rgba(227, 227, 227, 0.6), rgba(227, 227, 227, 0.3));
+}
+
+.vawes {
+  position: relative;
+  top: -2rem;
+  left: -2rem;
+  width: 7rem;
+  height: 7rem;
+  fill: none;
+}
+
+.wave_1, .wave_2 {
+  stroke: rgba(227, 227, 227, 0.7);
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 2;
+  animation: wave 3s infinite linear;
+  opacity: 0;
+  transform-origin: center;
+}
+
+.wave_1 {
+  animation-delay: 0.1s;
+}
+
+.wave_2 {
+  animation-delay: 1.5s;
+}
+
+@keyframes wave {
+  from { transform: scale(0.45) rotate(0); opacity: 1; }
+  to { transform: scale(1) rotate(20deg); opacity: 0;}
+}
+
+@keyframes eyes {
+  from { transform: translateX(-0.4rem) }
+  to { transform: translateX(0.4rem) }
+}
+
+@keyframes eye {
+  40% { transform: scaleY(1) }
+  50% { transform: scaleY(0) }
+  60% { transform: scaleY(1) }
+}
